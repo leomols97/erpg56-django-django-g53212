@@ -21,5 +21,5 @@ class Task(models.Model):
 
     # Ceci permet d'afficher les valeurs des attributs de la classe. Il faut concaténer
     def __str__(self):
-        return 'Titre : ' + self.title \
+        return '\nTitre : ' + self.title \
                + '\nDescription : ' + self.description + '\n\n'

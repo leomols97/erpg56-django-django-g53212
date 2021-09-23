@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, >
+initial-scale=1.0">
+    <title>MProject</title>
+</head>
+<body>
+<h1>TD01</h1>
+<h2>Liste des dévelopeurs</h2>
+{% if developers %}
+    <ul>
+        {% for dev in developers %}
+            {#<li>{{ dev.first_name }}</li>#} <!-- ceci est commenté !-->
+            <li>
+            <!-- 'url' permet de déduire l'url qu'il y a avant, donc, de ne pas coder
+            en dur l'url comme elle l'était avant et de devoir changer en dur le changement,
+            plutot que de laisser le fichier 'urls.py' déduire la partie d'url qui précède -->
+                {# <a href='/developer/{{ dev.id }}'>{{ dev.first_name }}</a> #}      <!-- ceci est l'ancienne URL -->
+                <a href="{% url 'developer:detail' dev.id %}">{{ dev.first_name }}</a>
+            </li> <!-- <- new-->
+        {% endfor %}
+    </ul>
+{% else %}
+    <p><strong>Il n'y a aucun dévelopeur enregistré !</strong></p>
+{% endif %}
+</body>
+</html>
