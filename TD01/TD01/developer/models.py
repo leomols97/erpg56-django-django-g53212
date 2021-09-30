@@ -7,6 +7,10 @@ class Developer(models.Model):
     first_name = models.CharField(verbose_name="first name", max_length=200)
     last_name = models.CharField(max_length=200)
 
+    # Ceci vérifie que les développeurs sont libres de tâches
+    def is_free(self):  # <- new
+        return self.tasks.count() == 0  # <- new
+
     # Ceci permet d'afficher les valeurs des attributs de la classe. Il faut concaténer
     def __str__(self):
         return '\nPrénom : ' + self.first_name \
